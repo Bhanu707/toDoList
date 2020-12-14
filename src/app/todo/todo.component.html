@@ -1,0 +1,28 @@
+<div style="align-items: center;margin-left: 20%; margin-right: 20%;">
+    <span class="input-group input-group-sm">
+        <span class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">CurrentListItem</span>
+        </span><br>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]=newTask>
+    </span><br>
+    <button (click)="addToList()" value="Add to the list " class="btn btn-primary"> Add to List</button>
+    <ul *ngFor="let x of items; index as i"> &nbsp;
+        <li> {{x}} <button (click)="delete(i)" style="margin-left: 30%;" value="Delete"
+                class="btn btn-danger ">Delete</button>&nbsp; &nbsp; <button (click)="edit(x,i)" value="Edit"
+                class="btn btn-info">Edit</button></li>
+    </ul> &nbsp; &nbsp;
+
+
+    <ul *ngFor="let x of array1; index as i">
+        <li> {{x}} </li>
+    </ul>
+</div>
+
+<!-- 
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+  </div> -->
