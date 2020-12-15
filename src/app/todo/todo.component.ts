@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'ngx-webstorage-service';
 import { Observable, Subject } from 'rxjs';
+import { Storage1Service } from '../service/storage1.service';
 //import { LocalstorageService } from '../localstorage.service';
+
 
 
 @Component({
    selector: 'app-todo',
    templateUrl: './todo.component.html',
    styleUrls: ['./todo.component.css'],
-   // providers: [LocalstorageService]
+   //providers: [storage1.Service]
 })
 export class TodoComponent implements OnInit {
+   display: string;
 
    constructor(
-
+      private storage1: Storage1Service
    ) { }
 
    ngOnInit(): void {
@@ -39,10 +43,14 @@ export class TodoComponent implements OnInit {
          this.newTask = '';
          // Object.assign({}, this.items);
          // this.localStorage1.store(this.items);
+         this.storage1.setSessionStorage(this.items);
+         this.display = this.storage1.getSessionStorage();
 
       } else {
          this.items.push(this.newTask);
          this.newTask = '';
+         this.storage1.setSessionStorage(this.items);
+         this.display = this.storage1.getSessionStorage();
          // Object.assign({}, this.items);
          // this.localStorage1.store(this.items);
 
